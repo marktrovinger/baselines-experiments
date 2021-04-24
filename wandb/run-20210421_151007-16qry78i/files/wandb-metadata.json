@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.4.0-71-generic-x86_64-with-debian-bullseye-sid",
+    "python": "3.7.9",
+    "heartbeatAt": "2021-04-21T19:10:08.722545",
+    "startedAt": "2021-04-21T19:10:07.915250",
+    "docker": null,
+    "gpu": "GeForce RTX 2060",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/gansandgains/Projects/baselines-experiments/weightsbiases.py",
+    "codePath": "weightsbiases.py",
+    "git": {
+        "remote": "https://github.com/marktrovinger/baselines-experiments.git",
+        "commit": "379bcd52e47aa21c0e552d6e5df3c0ea42d2a0ea"
+    },
+    "email": "mark.trovinger@gmail.com",
+    "root": "/home/gansandgains/Projects/baselines-experiments",
+    "host": "deeplearningbox",
+    "username": "gansandgains",
+    "executable": "/home/gansandgains/anaconda3/envs/baselines/bin/python"
+}
