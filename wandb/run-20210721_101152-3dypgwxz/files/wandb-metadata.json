@@ -1,0 +1,22 @@
+{
+    "os": "Darwin-20.3.0-x86_64-i386-64bit",
+    "python": "3.6.12",
+    "heartbeatAt": "2021-07-21T14:11:53.719889",
+    "startedAt": "2021-07-21T14:11:52.616379",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "weightsbiases.py",
+    "codePath": "weightsbiases.py",
+    "git": {
+        "remote": "https://github.com/marktrovinger/baselines-experiments.git",
+        "commit": "cae139a195810ff9c23a550b5edb8d4f820a975d"
+    },
+    "email": "mark.trovinger@gmail.com",
+    "root": "/Users/marktrovinger/Projects/baselines-experiments",
+    "host": "Marks-MacBook-Air.local",
+    "username": "marktrovinger",
+    "executable": "/Users/marktrovinger/opt/miniconda3/envs/baselines/bin/python"
+}
