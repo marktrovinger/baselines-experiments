@@ -1,0 +1,100 @@
+diff --git a/dqn-sb3.py b/dqn-sb3.py
+index 9e9e67f..a1f0ed5 100644
+--- a/dqn-sb3.py
++++ b/dqn-sb3.py
+@@ -1,19 +1,40 @@
+ import gym
+-
+ from stable_baselines3 import A2C
+ from stable_baselines3 import DQN
++from stable_baselines3.common.monitor import Monitor
++from stable_baselines3.common.vec_env import DummyVecEnv, VecVideoRecorder
++from wandb.integration.sb3 import WandbCallback
++import wandb
++import time
++
++def make_env():
++    env = gym.make("CartPole-v1")
++    env = Monitor(env)  # record stats such as returns
++    return env
++
++env = DummyVecEnv([make_env])
+ 
+-env = gym.make('LunarLander-v2')
++env = VecVideoRecorder(env, "videos",
++    record_video_trigger=lambda x: x % 2000 == 0, video_length=200)
+ 
+-#model = A2C('MlpPolicy', env, verbose=1)
+-model = DQN('MlpPolicy', env, verbose=1)
+-model.learn(total_timesteps=10000)
++config = {"policy_type": "MlpPolicy", "total_timesteps": 25000}
++# experiment name = Model + env name
++experiment_name = f"PPO_{env}"
+ 
+-obs = env.reset()
++wandb.init(
++    name=experiment_name,
++    project="sb3",
++    config=config,
++    sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
++    monitor_gym=True,  # auto-upload the videos of agents playing the game
++    save_code=True,  # optional
++)
+ 
+-for i in range(1000):
+-    action, _state = model.predict(obs, deterministic=True)
+-    obs, reward, done, info = env.step(action)
+-    env.render()
+-    if done:
+-      obs = env.reset()
++model = DQN(config.get('policy_type'), env, verbose=1, 
++              tensorboard_log=f"runs/{experiment_name}")
++model.learn(total_timesteps=config.get('total_timesteps'),
++              callback=WandbCallback(
++                gradient_save_freq=100,
++                model_save_freq=100,
++                model_save_path=f"models/{experiment_name}"
++              ),)
+diff --git a/wandb/debug-internal.log b/wandb/debug-internal.log
+index 8a40b93..d2369e3 120000
+--- a/wandb/debug-internal.log
++++ b/wandb/debug-internal.log
+@@ -1 +1 @@
+-run-20210721_102801-1rvqnux5/logs/debug-internal.log
+\ No newline at end of file
++run-20210721_114900-1t3ut90r/logs/debug-internal.log
+\ No newline at end of file
+diff --git a/wandb/debug.log b/wandb/debug.log
+index 4ed1410..ffa64f4 120000
+--- a/wandb/debug.log
++++ b/wandb/debug.log
+@@ -1 +1 @@
+-run-20210721_102801-1rvqnux5/logs/debug.log
+\ No newline at end of file
++run-20210721_114900-1t3ut90r/logs/debug.log
+\ No newline at end of file
+diff --git a/wandb/latest-run b/wandb/latest-run
+index 7f014b6..8b0719c 120000
+--- a/wandb/latest-run
++++ b/wandb/latest-run
+@@ -1 +1 @@
+-run-20210721_102801-1rvqnux5
+\ No newline at end of file
++run-20210721_114900-1t3ut90r
+\ No newline at end of file
+diff --git a/weightsbiases.py b/weightsbiases.py
+index e92dfd2..4413095 100644
+--- a/weightsbiases.py
++++ b/weightsbiases.py
+@@ -1,10 +1,10 @@
+-import time
+ import gym
+ from stable_baselines3 import PPO
+ from stable_baselines3.common.monitor import Monitor
+ from stable_baselines3.common.vec_env import DummyVecEnv, VecVideoRecorder
+ from wandb.integration.sb3 import WandbCallback
+ import wandb
++import time
+ 
+ config = {"policy_type": "MlpPolicy", "total_timesteps": 25000}
+ experiment_name = f"PPO_{int(time.time())}"

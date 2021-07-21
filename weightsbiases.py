@@ -1,10 +1,10 @@
-import time
 import gym
 from stable_baselines3 import PPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, VecVideoRecorder
 from wandb.integration.sb3 import WandbCallback
 import wandb
+import time
 
 config = {"policy_type": "MlpPolicy", "total_timesteps": 25000}
 experiment_name = f"PPO_{int(time.time())}"

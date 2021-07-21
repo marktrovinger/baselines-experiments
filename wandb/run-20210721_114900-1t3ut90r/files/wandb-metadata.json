@@ -1,0 +1,22 @@
+{
+    "os": "Darwin-20.3.0-x86_64-i386-64bit",
+    "python": "3.6.12",
+    "heartbeatAt": "2021-07-21T15:49:01.012780",
+    "startedAt": "2021-07-21T15:49:00.177257",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "dqn-sb3.py",
+    "codePath": "dqn-sb3.py",
+    "git": {
+        "remote": "https://github.com/marktrovinger/baselines-experiments.git",
+        "commit": "712d9800ec3f9c35ac5f9c4191231d8997e1fddf"
+    },
+    "email": "mark.trovinger@gmail.com",
+    "root": "/Users/marktrovinger/Projects/baselines-experiments",
+    "host": "Marks-MacBook-Air.local",
+    "username": "marktrovinger",
+    "executable": "/Users/marktrovinger/opt/miniconda3/envs/baselines/bin/python"
+}
