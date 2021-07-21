@@ -1,0 +1,22 @@
+{
+    "os": "Darwin-20.3.0-x86_64-i386-64bit",
+    "python": "3.6.12",
+    "heartbeatAt": "2021-07-21T17:20:24.034075",
+    "startedAt": "2021-07-21T17:20:23.169480",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "atari-sb3.py",
+    "codePath": "atari-sb3.py",
+    "git": {
+        "remote": "https://github.com/marktrovinger/baselines-experiments.git",
+        "commit": "d16c52f63d5a295176c45493d7060df88003ef2c"
+    },
+    "email": "mark.trovinger@gmail.com",
+    "root": "/Users/marktrovinger/Projects/baselines-experiments",
+    "host": "Marks-MacBook-Air.local",
+    "username": "marktrovinger",
+    "executable": "/Users/marktrovinger/opt/miniconda3/envs/baselines/bin/python"
+}
