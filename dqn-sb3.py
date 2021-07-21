@@ -19,7 +19,7 @@ env = VecVideoRecorder(env, "videos",
 
 config = {"policy_type": "MlpPolicy", "total_timesteps": 25000}
 # experiment name = Model + env name
-experiment_name = f"PPO_{env.unwrapped.spec.id}"
+experiment_name = f"DQN_{env.unwrapped.spec.id}"
 
 wandb.init(
     name=experiment_name,
