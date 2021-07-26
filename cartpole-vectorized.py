@@ -30,9 +30,10 @@ run = wandb.init(
 
 model = PPO(config.get('policy_type'), env, verbose=1, 
               tensorboard_log=f"runs/{run.id}")
+
 model.learn(total_timesteps=config.get('total_timesteps'),
               callback=WandbCallback(
                 gradient_save_freq=100,
                 model_save_freq=100,
-                model_save_path=f"models/{run.id}"
+                model_save_path=f"models/{run.id}",
               ),)
